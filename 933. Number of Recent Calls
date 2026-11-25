@@ -1,0 +1,19 @@
+class RecentCounter {
+    private int[] pings;
+    private int start;
+    private int end;
+
+    public RecentCounter() {
+        pings = new int[10001];
+        start = 0;
+        end = 0;
+    }
+
+    public int ping(int t) {
+        pings[end++] = t;
+        while (pings[start] < t - 3000) {
+            start++;
+        }
+        return end - start;
+    }
+}
